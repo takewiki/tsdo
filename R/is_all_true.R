@@ -8,10 +8,12 @@
 #' @examples  is_all_true(T,T,T,F)
 is_all_true <-function (x)
 {
-  if (F %in% x)
+  if (NA %in% x)
   {
-    F
+    NA
+  }else if( FALSE %in% x){
+    FALSE
   }else{
-    T
+    TRUE
   }
 }
