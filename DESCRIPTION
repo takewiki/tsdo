@@ -29,7 +29,6 @@ Collate:
     'rowColEx.R'
     'salesOrderHead.R'
     'setAs.R'
-    'tsdo.R'
     'value_if_na.R'
     'zzz.R'
 Suggests: 
