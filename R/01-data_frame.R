@@ -31,3 +31,15 @@ df_columnName <- function(data_frame) {
   return(res);
 }
 
+
+#' 合并data_frame的列信息，用于文本合并
+#'
+#' @param data_frame 数据框
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples df_mergeColumn();
+df_mergeColumn <- function(data_frame){
+  do.call('paste',c(data_frame,sep=""));
+}
