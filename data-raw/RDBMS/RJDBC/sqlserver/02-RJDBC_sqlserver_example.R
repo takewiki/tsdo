@@ -1,5 +1,0 @@
-library(RJDBC)
-drv <- JDBC("com.microsoft.sqlserver.jdbc.SQLServerDriver","/opt/sqljdbc_7.2/enu/mssql-jdbc-7.2.2.jre8.jar")
-con <- dbConnect(drv, "jdbc:sqlserver://115.159.201.178:1433;databaseName=AIS20190427230019", "sa", "Hoolilay889@")
-voucher <- dbGetQuery(con,'select * from T_GL_VOUCHER;')
-View(voucher)
