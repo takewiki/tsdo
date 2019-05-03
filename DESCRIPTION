@@ -12,7 +12,13 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0
 Collate: 
-    '01-data_frame.R'
+    '00-R_utils.R'
+    '01-vec_character.R'
+    '01-vec_integer.R'
+    '01-vec_logical.R'
+    '01-vec_numeric.R'
+    '02-list.R'
+    '03-data_frame.R'
     'decimal2Hex_color.R'
     'CMYK.R'
     'CMYK2RGB.R'
