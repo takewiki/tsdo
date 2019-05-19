@@ -15,3 +15,6 @@ df_columnType(data_frame)
 \description{
 返回数据值的每列的数据类型
 }
+\examples{
+df_columnType();
+}

@@ -6,7 +6,7 @@
 #' @return 返回值
 #' @export
 #'
-#' @examples 
+#' @examples df_columnType();
 df_columnType <- function(data_frame) {
   if (class(data_frame) != 'data.frame'){
     stop('数据类型必须为data.frame！',call. = FALSE)
@@ -43,3 +43,79 @@ df_columnName <- function(data_frame) {
 df_mergeColumn <- function(data_frame){
   do.call('paste',c(data_frame,sep=""));
 }
+
+
+#' 增加对任意数据框进行排序功能
+#'
+#' @param srcData 源数据框
+#' @param order_by 排序字段，向量
+#' @param is_asc 逻辑变更，默认T为升序
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples df_orderData()
+df_orderData <- function(srcData='data',order_by,is_asc=order_d){
+  order_d <- rep(T,length(order_by));
+  #order_by <- names(test)[1:4];
+  order_by2 <- paste(order_by,collapse = ",");
+  #处理排序字段逻辑
+  is_asc2 <- !is_asc;
+  is_asc2 <- paste(is_asc2,collapse = ',');
+  #
+  newData <-'res_ordered';
+  expr <-paste(newData," <- ",
+               srcData,"[with(",srcData,
+               ",order(",order_by2,
+               ",decreasing = c(",is_asc2,"),method='radix')),]",
+               sep = "")
+  expr_pared <-parse(text = expr)
+  eval(expr = expr_pared)
+  return(res_ordered);
+  
+}
+
+#' 将 df列转化为sqlserver select field字符串
+#'
+#' @param data 数据
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples df_col2sqlFieldString();
+df_col2sqlFieldString <- function (data)
+{
+  paste0("'",data,"',");
+}
+
+
+
+#' 将数据框的行与列进行转化，
+#'
+#' @param data  数据框，要求第一列必须为文本，后续用于形成列标题
+#'
+#' @return   返回转化后的数据框
+#' @export
+#'
+#' @examples rowColEx(data);
+df_rowColEx <- function ( data)
+{
+  col_name <- names(data);
+  
+  #str(col_name[-1]);
+  #col_name;
+  row_name <-data[,1];
+  #row_name;
+  data_matrix <- as.matrix(data[,-1]);
+  data_tmp <- t(data_matrix);
+  data_rs <-as.data.frame(data_tmp);
+  data_rs$category <- col_name[-1];
+  ncol<-dim(data_rs)[2];
+  ncol2<- ncol-1;
+  data_rs <-data_rs[,c(ncol,1:ncol2)];
+  names(data_rs) <- c(col_name[1],row_name);
+  data_rs;
+}
+
+
+
