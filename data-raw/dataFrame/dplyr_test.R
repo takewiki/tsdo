@@ -75,8 +75,41 @@ mtcars %>%
   summarise(avg = mean(mpg),sum=sum(disp));
 
 
+lag(letters);
+
+
 df_groupBy_summarise_cols_funs(mtcars,
                                gp_fieldName = c('mpg','cyl','disp'),
                                gp_fieldCaption = c('gp1','gp2','gp3'),
                                funName = c('sum','sum','sum'),
                                summ_fieldCaption = c('sum1','sum2','sum3'));
+
+
+data1 <-data.frame(fname=letters[1:10],fage=21:30,stringsAsFactors=F);
+data2 <-slice(data1,5:10);
+data2 <-rbind(data2,data.frame(fname=letters[11:20],fage=31:40,stringsAsFactors=F));
+
+
+setdiff(data1,data2);
+
+setdiff(data2,data1);
+
+intersect(data1,data2);
+
+union(data1,data2);
+union_all(data1,data2);
+
+setdiff;
+
+intersect;
+
+
+iris %>% group_by(Species,Petal.Width) %>%
+top_n( 2, Sepal.Width)
+
+iris;
+
+
+df_groupBy_topN(data = iris,gp_fieldName = 'Species',order_fieldName = 'Sepal.Width',N = 2
+                
+                  );

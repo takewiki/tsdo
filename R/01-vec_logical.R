@@ -1,21 +1,3 @@
-#' 定义逻辑判断方案，选择第一个方案或备用方案
-#'
-#' @param a 第一个方案
-#' @param b 备用方案
-#'
-#' @return 返回值
-#' @export
-#'
-#' @examples 'a' %||% 'b'
-`%||%` <- function(a,b){
-  if (!is.na(a)){
-    res <- a
-  }else{
-    res <- b
-  }
-  return(res)
-}
-
 
 #' 如果向量值为NA，则替代为相应的replace_value
 #'
