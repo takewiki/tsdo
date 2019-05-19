@@ -60,3 +60,32 @@ data("joinData2");
 filed_by <-c('fname','fclass');
 df_fullJoin_bySameColNames(joinData1,joinData2,filed_by)
 
+
+library(dplyr);
+?add_row;
+
+
+add_row(faithful, eruptions = 1, waiting = 1,.before = 4);
+
+  add_row(faithful, eruptions = 1, waiting = 1,.after = 4);
+
+
+?anti_join();
+
+
+anti_join(joinData1,joinData2,by='fname');
+
+joinData1;
+joinData2;
+
+setdiff(joinData1,joinData2);
+
+joinData3;
+
+anti_join(joinData1,joinData3,by=c('fname'='titileName'));
+
+setdiff(joinData1,joinData3);
+
+
+
+df_filter(iris,fieldName = 'Sepal.Width',comparerSign = '=',value_vec = '3.5',comboLogi_vec = 'and');
