@@ -119,17 +119,15 @@ timeDiff <- function(x,targetTime,unit='h',digit=1) {
     targetTime <- hms(targetTime);
   }
   
-  cof <- 1;
+  #cof <- 1;
   
-  if (unit == 'h')  {
+  if (unit == 'h'){
     cof <-3600;
-  }
-  if(unit == 'm'){
+  } else  if(unit == 'm'){
    cof <- 60; 
-  }else{
+  } else {
     cof <-1;
   }
-  
-  res <- round(as.numeric(targetTime-x),digit);
-  return(res);
+   res <- round(as.numeric(targetTime-x)/cof,digit);
+   return(res);
 }
