@@ -131,3 +131,94 @@ timeDiff <- function(x,targetTime,unit='h',digit=1) {
    res <- round(as.numeric(targetTime-x)/cof,digit);
    return(res);
 }
+
+#' 将字符串变成完整的时间
+#'
+#' @param x 字符串
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' as.datetime('2019-08-14 08:00:00')
+as.datetime <- function(x) {
+  res <- as.POSIXct(x);
+  return(res);
+  
+}
+
+#' 判断对象是否为日期时间型
+#'
+#' @param x 对象 
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' is.datetime(as.datetime('2019-08-14 08:14:00'));
+is.datetime <- function(x){
+ res <- "POSIXct" %in% class(x);
+ return(res);
+}
+
+#' 计算出两个datetime类型数据的时间差
+#'
+#' @param x  第一个数据
+#' @param y  第一个数据
+#' @param unit 时间差单位，默认为h表示小时
+#' @param digit 保留小数位数
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' datetime_diff(as.datetime('2019-08-14 08:14:00'),as.datetime('2019-08-15 08:14:00'))
+datetime_diff <- function(x,y,unit='h',digit=1)
+{
+  if(class(x) == 'character'){
+    x <- as.datetime(x);
+  }
+  if(class(y) == 'character'){
+    y <- as.datetime(y)
+  }
+  cof <-1;
+  if (unit == 'h'){
+    cof <-3600;
+  }else if(unit == 'm'){
+    cof <-60;
+  }else{
+    cof <-1;
+  }
+  res <- round((as.numeric(y)-as.numeric(x))/cof,digit);
+  return(res);
+}
+
+#' 处理日期字段，兼容as.Date
+#'
+#' @param x 文本
+#'
+#' @return 返回日期字段
+#' @export
+#'
+#' @examples
+#' as.date('2019-04-09');
+as.date <- function(x) {
+  res <- as.Date(x);
+  return(res);
+  
+}
+
+#' 判断是否为日期类型的字段
+#'
+#' @param x  对象
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' is.date(as.date('2019-09-09'));
+is.date <- function(x) {
+  res <- class(x) =="Date";
+  return(res);
+  
+}
