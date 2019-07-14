@@ -26,6 +26,7 @@ Collate:
     '03-df_joinOpers.R'
     '03-df_rowOpers.R'
     '04-tbl.R'
+    '05-datetime.R'
     '11-color.R'
     'zzz.R'
 Suggests: 
