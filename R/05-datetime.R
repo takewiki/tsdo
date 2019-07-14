@@ -97,3 +97,39 @@ is.Night <- function(x,nightStartTime='18:30:00') {
   return(res);
   
 }
+
+
+#' 处理两个时间差
+#'
+#' @param x 原始时间数据
+#' @param targetTime  目标时间数据
+#' @param unit 差额的时间单位
+#' @param digit 保留小数位数
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' timeDiff('6:00:00','9:00:00')
+timeDiff <- function(x,targetTime,unit='h',digit=1) {
+  if ( class(x) =='character'){
+    x <- hms(x);
+  }
+  if (class(targetTime) == 'character'){
+    targetTime <- hms(targetTime);
+  }
+  
+  cof <- 1;
+  
+  if (unit == 'h')  {
+    cof <-3600;
+  }
+  if(unit == 'm'){
+   cof <- 60; 
+  }else{
+    cof <-1;
+  }
+  
+  res <- round(as.numeric(targetTime-x),digit);
+  return(res);
+}
