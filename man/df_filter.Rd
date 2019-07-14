@@ -27,4 +27,5 @@ df_filter(data = iris, fieldName = c("Species", "Sepal.Width"),
 }
 \examples{
 df_filter();
+df_filter(iris,fieldName = 'Sepal.Width',comparerSign = '=',value_vec = '3.5',comboLogi_vec = 'and');
 }

@@ -14,7 +14,7 @@ df_columnType <- function(data_frame) {
   res <- unlist(lapply(data_frame, class));
   return(res);
 }
-
+# 获取数据框的列名----
 #' 获取数据框的列名
 #'
 #' @param data_frame 数据框
@@ -31,7 +31,7 @@ df_columnName <- function(data_frame) {
   return(res);
 }
 
-
+# 合并data_frame的列信息，用于文本合并----
 #' 合并data_frame的列信息，用于文本合并
 #'
 #' @param data_frame 数据框
@@ -73,6 +73,23 @@ df_orderData <- function(srcData='data',order_by,is_asc=order_d){
   eval(expr = expr_pared)
   return(res_ordered);
   
+}
+
+# 数据框选取列----
+#' 数据框选取列
+#'
+#' @param data 数据框
+#' @param colSelected 列名 
+#'
+#' @return 返回值
+#' @import dplyr
+#' @export
+#'
+#' @examples
+#' df_selectCol();
+df_selectCol <- function(data,colSelected) {
+  res <-select(data,colSelected);
+  return(res);
 }
 
 #' 将 df列转化为sqlserver select field字符串
