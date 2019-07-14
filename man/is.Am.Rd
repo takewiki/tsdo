@@ -4,7 +4,7 @@
 \alias{is.Am}
 \title{判断时间字段是否为上午}
 \usage{
-is.Am(x, AmEndTime = "12:00:00")
+is.Am(x, AmStartTime = "6:00:00", AmEndTime = "12:00:00")
 }
 \arguments{
 \item{x}{时间字段}

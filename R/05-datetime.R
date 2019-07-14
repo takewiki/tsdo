@@ -14,6 +14,28 @@ return(res);
   
 }
 
+#' 判断时间是否为凌晨
+#'
+#' @param x  时间
+#' @param morningStartTime 凌晨开始时间
+#' @param morningEndTime   凌晨结束时间
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' is.Morning();
+is.Morning <- function(x,morningStartTime='0:00:00',morningEndTime='6:00:00') {
+  if (class(x) == 'character'){
+    x <- hms(x);
+  }
+  morningStartTime <- hms(morningStartTime);
+  morningEndTime <- hms(morningEndTime);
+  res <- x> morningStartTime & x < morningEndTime;
+  return(res);
+  
+}
+
 #' 判断时间字段是否为上午
 #'
 #' @param AmEndTime 上午结束时间
@@ -24,12 +46,13 @@ return(res);
 #'
 #' @examples
 #' is.Am(9:00:00);
-is.Am <- function(x,AmEndTime='12:00:00') {
+is.Am <- function(x,AmStartTime='6:00:00',AmEndTime='12:00:00') {
   if (class(x) == 'character'){
     x <- hms(x);
   }
+  AmStartTime <- hms(AmStartTime);
   AmEndTime <- hms(AmEndTime);
-  res <- x < AmEndTime;
+  res <- x> AmStartTime & x < AmEndTime;
   return(res);
 }
 # 判断时间是否为下午时间----

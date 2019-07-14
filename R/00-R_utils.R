@@ -22,3 +22,7 @@ R_expr <- function(string){
 R_exec <- function(expr){
   eval(expr = expr,envir = parent.frame())
 }
+# 引入相应的管道符号
+#' @importFrom magrittr %>%
+#' @export
+magrittr::`%>%`
