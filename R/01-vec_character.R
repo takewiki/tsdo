@@ -246,7 +246,11 @@ str_equals <- function(x,keys) {
   for( i in 1:ncount){
     res[[i]] <-str_equal(x,keys[i]);
   }
-  res <- do.call('|',res);
+  
+  p1 <-paste(' res[[',1:ncount,']] ',sep = "",collapse = "|");
+  p2 <- paste('res <- ',p1,sep="");
+  expr <- R_expr(p2);
+  R_exec(expr);
   return(res);
 }
 
@@ -256,12 +260,20 @@ str_equals <- function(x,keys) {
 #' @param keys 多个关键词
 #'
 #' @return 返回值
+#' @import stringr
 #' @export
 #'
 #' @examples
 #' str_contains(); 
 str_contains <- function(x,keys) {
-  res <- x %in% keys
+  
+  index <- seq_along(keys);
+  res <- list();
+  for ( i in index)
+  {
+    res[[i]] <- str_contain(x,keys[i])
+  }
+  res<-or_multiple(res);
   return(res);
   
 }

@@ -47,4 +47,21 @@ is.odd <- function(x){
   ifelse(x%%2 ==0,F,T)
 }
 
-
+#' 扩展基本的or，用于多个变量的连接
+#'
+#' @param res 多个逻辑变量采用列表形式
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' or_multiple();
+or_multiple <- function(res) {
+  ncount <- length(res);
+  p1 <-paste(' res[[',1:ncount,']] ',sep = "",collapse = "|");
+  p2 <- paste('res <- ',p1,sep="");
+  expr <- R_expr(p2);
+  R_exec(expr);
+  return(res);
+  
+}
