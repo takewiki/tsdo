@@ -109,6 +109,22 @@ subsetStr <- function (x,pattern)
   str_subset(x,pattern);
 }
 
+# 文件中是否包含字段检查----
+#' 文件中是否包含字段检查
+#'
+#' @param x 字符向量
+#' @param pattern 检查模式
+#'
+#' @return 返回值
+#' @import stringr
+#' @export
+#'
+#' @examples
+#' str_contain(letters,'a');
+str_contain <- function(x,pattern){
+  str_detect(x,pattern)
+}
+
 # 用于字符串的替代------
 #' 用于字符串的替代
 #'
