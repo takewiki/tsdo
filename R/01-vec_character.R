@@ -89,7 +89,7 @@ mid  <- function (x,startIndex,num_char){
 #' @return 返回一个列表
 #' @export
 #' @import stringr
-#' @examples split.str('afsdsdf,bbbfsdfds,sdfds',',');
+#' @examples splitStr('afsdsdf,bbbfsdfds,sdfds',',');
 splitStr <- function (x,pattern){
   str_split(x,pattern);
 }

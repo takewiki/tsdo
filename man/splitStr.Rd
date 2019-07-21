@@ -18,5 +18,5 @@ splitStr(x, pattern)
 将字符串进行拆分开
 }
 \examples{
-split.str('afsdsdf,bbbfsdfds,sdfds',',');
+splitStr('afsdsdf,bbbfsdfds,sdfds',',');
 }
