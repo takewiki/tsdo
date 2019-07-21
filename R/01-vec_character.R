@@ -125,6 +125,28 @@ str_contain <- function(x,pattern){
   str_detect(x,pattern)
 }
 
+# 复制上一行数据-----
+#' 复制上一行数据-----
+#'
+#' @param x 字符型向量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_copyPrevRow();
+str_copyPrevRow <- function(x){
+  ncount <- length(x);
+  i <-1;
+  while(i < ncount){
+    if ( x[i+1] == ""){
+      x[i+1] <- x[i];
+      i <- i+1;
+    }
+  }
+  return(x)
+}
+
 # 用于字符串的替代------
 #' 用于字符串的替代
 #'
