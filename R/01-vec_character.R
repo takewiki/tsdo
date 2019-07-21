@@ -216,6 +216,40 @@ str_splitByRighttBrace <- function(x,prefix="",suffix="") {
   res <- str_splitCols(x,pattern);
   return(res);
 }
+#' 固定字符的对比
+#'
+#' @param x  字符串向量
+#' @param key  对比字符
+#'
+#' @return 返回一个向量
+#' @export
+#'
+#' @examples
+#' str_equal();
+str_equal <- function(x,key){
+  res <- x == key ;
+  return(res);
+}
+#' 将字符串用于多个关键词的对比
+#'
+#' @param x 字符向量
+#' @param keys 对比关键词
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_equals();
+str_equals <- function(x,keys) {
+  ncount <- length(keys);
+  res <- list();
+  for( i in 1:ncount){
+    res[[i]] <-str_equal(x,keys[i]);
+  }
+  res <- do.call('|',res);
+  return(res);
+}
+
 # 用于字符串的替代------
 #' 用于字符串的替代
 #'

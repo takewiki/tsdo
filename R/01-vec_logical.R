@@ -46,3 +46,5 @@ is_all_true <-function (x)
 is.odd <- function(x){
   ifelse(x%%2 ==0,F,T)
 }
+
+
