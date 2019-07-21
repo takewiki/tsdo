@@ -222,3 +222,36 @@ is.date <- function(x) {
   return(res);
   
 }
+
+#' 计算2个日期之间的差异
+#'
+#' @param startDate 开始日期
+#' @param endDate  结束日期
+#' @param unit    日期差异的单位,默认为d
+#' @param hourPerDay  每天工作小时数
+#' @param is.hr  是否HR计时
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' date_diff('2019-6-11','2019-07-22')
+date_diff <- function(startDate,endDate,unit='d',hourPerDay=8,is.hr=TRUE) {
+  if (class(startDate) == 'character'){
+    startDate <- as.date(startDate)
+  }
+  if(class(endDate) == 'character'){
+    endDate <- as.date(endDate);
+  }
+  offset1 <- 0;
+  if (is.hr == TRUE ){
+    offset1 <- 1; 
+  }
+  if (unit == 'd'){
+    hourPerDay <-1;
+  }
+  res <- (as.numeric(endDate)-as.numeric(startDate)+offset1)* hourPerDay;
+  return(res);
+  
+  
+}
