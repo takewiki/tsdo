@@ -141,8 +141,12 @@ str_copyPrevRow <- function(x){
   while(i < ncount){
     if ( x[i+1] == ""){
       x[i+1] <- x[i];
-      i <- i+1;
+      
+    } else {
+      x[i+1] <- x[i+1];
+      
     }
+    i <- i+1;
   }
   return(x)
 }
