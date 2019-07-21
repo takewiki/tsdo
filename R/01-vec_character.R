@@ -151,6 +151,71 @@ str_copyPrevRow <- function(x){
   return(x)
 }
 
+#' 将一列数据分解为多列数据,返回列表
+#'
+#' @param x  将要处理的处理
+#' @param sep 分隔符
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_splitCols();
+str_splitCols <- function(x,sep=",") {
+  
+  
+  res_split <-splitStr(x,sep);
+  #记录行数
+  list_count <- length(res_split);
+  #拆分列数
+  col_count <-max(unlist(lapply(res_split, length)));
+  #初始化结果
+  res <- list();
+  #使用2个循环进行处理
+  for (j in 1:col_count){
+    #按列
+    res[[j]] <- character(list_count);
+    for (i in 1:list_count){
+      #按行
+      res[[j]][i] <- res_split[[i]][j];
+    }
+  }
+  return(res);
+}
+
+#' 将字符串分解为多列，使用英文状态下的左括号，允许前后添加内容；
+#'
+#' @param x  字符向量
+#' @param prefix 左括号前缀
+#' @param suffix 左括号后缀
+#'
+#' @return 返回结果列表
+#' @export
+#'
+#' @examples
+#'str_splitByLeftBrace(); 
+str_splitByLeftBrace <- function(x,prefix="",suffix="") {
+  pattern <-paste(prefix,"\\(",suffix,sep="");
+  res <- str_splitCols(x,pattern);
+  return(res);
+}
+
+#' 将字符串进行拆分为多列，使用右括号
+#'
+#' @param x 字符向量
+#' @param prefix 右括号前缀
+#' @param suffix 右括号后缀
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_splitByRighttBrace();
+str_splitByRighttBrace <- function(x,prefix="",suffix="") {
+  pattern <-paste(prefix,"\\)",suffix,sep="");
+  res <- str_splitCols(x,pattern);
+  return(res);
+}
 # 用于字符串的替代------
 #' 用于字符串的替代
 #'
