@@ -250,6 +250,22 @@ str_equals <- function(x,keys) {
   return(res);
 }
 
+#' 判断字符串中是否包含特定的多个字符
+#'
+#' @param x   字符串向量
+#' @param keys 多个关键词
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contains(); 
+str_contains <- function(x,keys) {
+  res <- x %in% keys
+  return(res);
+  
+}
+
 # 用于字符串的替代------
 #' 用于字符串的替代
 #'
