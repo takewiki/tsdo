@@ -134,5 +134,20 @@ df_rowColEx <- function ( data)
   data_rs;
 }
 
+#' 将数据框中的所有列作为文本处理
+#'
+#' @param df 处理框
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_as_character();
+df_as_character <- function(df) {
+  res <-lapply(df, as.character);
+  res <- as.data.frame(res,stringsAsFactors=F);
+  return(res);
 
+  
+}
 
