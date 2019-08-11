@@ -203,7 +203,12 @@ datetime_diff <- function(x,y,unit='h',digit=1)
 #' @examples
 #' as.date('2019-04-09');
 as.date <- function(x) {
-  res <- as.Date(x);
+  if (class(x) == 'character'){
+    res <- as.Date(x);
+  }else{
+    res <- x;
+  }
+   
   return(res);
   
 }
