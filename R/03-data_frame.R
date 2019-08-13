@@ -134,6 +134,27 @@ df_rowColEx <- function ( data)
   data_rs;
 }
 
+
+#' 将具有一行数据的数据框复制为多行
+#'
+#' @param data 原始数据框
+#' @param times 复制行数
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_rowRepMulti();
+df_rowRepMulti <- function(data,times =6) {
+  
+  if (nrow(data) != 1){
+    stop("data参数对应的数据框要求行数必须为1",call. = FALSE)
+  }
+  res <- as.data.frame(lapply(data,rep,times=times),stringsAsFactors=FALSE);
+  return(res);
+  
+}
+
 #' 将数据框中的所有列作为文本处理
 #'
 #' @param df 处理框
