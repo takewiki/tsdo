@@ -155,6 +155,38 @@ df_rowRepMulti <- function(data,times =6) {
   
 }
 
+
+#' 根据日期及时间数据拆分笔
+#'
+#' @param data  数据
+#' @param startDateName  开始日期字段 
+#' @param endDateName  结束日期字段
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_rowRepMultiByDate();
+df_rowRepMultiByDate <- function(data,
+                                  startDateName='FStartDate',
+                                  endDateName = 'FEndDate') {
+  startDate <- data[1,startDateName,drop=TRUE];
+  startDate <- as.date(startDate);
+  endDate <- data[1,endDateName,drop=TRUE];
+  endDate <- as.date(endDate);
+  date_count <- date_diff(startDate,endDate,is.hr = TRUE);
+  data_cols <- names(data);
+  date_cols <- c(startDateName,endDateName);
+  ot_cols <- data_cols[! data_cols %in% date_cols];
+  data_ot <- data[ , ot_cols];
+  res <-df_rowRepMulti(data = data_ot,date_count);
+  data_date <- date_minus(startDate,endDate);
+  res[ ,startDateName] <-data_date;
+  res[ ,endDateName] <- data_date;
+  res <- res[ ,data_cols];
+  return(res);
+  
+}
 #' 将数据框中的所有列作为文本处理
 #'
 #' @param df 处理框
