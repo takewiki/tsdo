@@ -41,3 +41,32 @@ listAsDF_rows <- function(data) {
   return(res);
   
 }
+
+
+
+#' 处理初始化list操作
+#'
+#' @param len 元素个数
+#' @param listNames 元素名称
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' library(tsdo);
+#' aa <-list_init(3);
+#' aa;
+#' bb<-list_init(listNames = LETTERS);
+#' bb;
+#' 
+list_init <- function(len=3,listNames=NULL) {
+  if(is.null(listNames)){
+    res <- vector('list',len)
+}else{
+  len <- length(listNames);
+  res <- vector('list',len);
+  names(res) <- listNames;
+}
+return(res);
+  
+}  
