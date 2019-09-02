@@ -383,3 +383,65 @@ addrPhoneExtractor <- function(file="~/pkgs/tsda/data-raw/src_data/addrPhone_dat
 }
 
 
+
+#' 将结果进行处理显示
+#'
+#' @param data 数据
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' segList();
+segList <- function(data) {
+  
+  #data <- list(letters,LETTERS);
+  
+  res <- lapply(data,function(row){
+    paste(row,collapse = " ");
+  })
+  
+  res <- as.character(res);
+  res <- paste(res,collapse = "\n");
+  
+}
+
+#' 将结合结果由列表变成向量
+#'
+#' @param data 数据
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' segList2Vec();
+segList2Vec <- function(data) {
+  
+  #data <- list(letters,LETTERS);
+  
+  res <- lapply(data,function(row){
+    paste(row,collapse = " ");
+  })
+  
+  res <- as.character(res);
+  #res <- paste(res,collapse = "\n");
+  return(res)
+  
+}
+
+#' 将编码器的多行文本转化为向量
+#'
+#' @param text 原始文本
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' editor_char();
+editor_char <- function(text){
+  res <-strsplit(text,"\n");
+  res <- res[[1]]
+  return(res);
+}
+
+
