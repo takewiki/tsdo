@@ -462,3 +462,23 @@ vect_as_list <- function(x){
   }
   return(res);
 }
+
+
+#' 将列表转化为字段串
+#'
+#' @param x 列表
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' list_as_vect();
+list_as_vect <- function(x) {
+  res <-unlist(x);
+  res <- paste(res,collapse = "\n")
+  return(res);
+}
+
+
+
+unlist(list('a','b'));
