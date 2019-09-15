@@ -445,3 +445,20 @@ editor_char <- function(text){
 }
 
 
+#' 处理将向量的每个元素装入一个列表
+#'
+#' @param x 原始向量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' vect_as_list(letters);
+vect_as_list <- function(x){
+  ncount <- length(x);
+  res <- list_init(ncount);
+  for (i in 1:ncount){
+    res[[i]] <-x[i]
+  }
+  return(res);
+}
