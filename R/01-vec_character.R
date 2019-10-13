@@ -480,5 +480,32 @@ list_as_vect <- function(x) {
 }
 
 
+#' 将向量转化为长字符串
+#'
+#' @param x 向量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' vect_as_long_string();
+vect_as_long_string <- function(x){
+  res <- paste(x,sep="",collapse = "_")
+  return(res);
+}
 
-unlist(list('a','b'));
+#' 处理字符串连接问题
+#'
+#' @param x 字符赂量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' vect_as_dbl_equal();
+vect_as_dbl_equal <- function(x){
+  res <- paste(x,sep="",collapse = "||")
+  return(res);
+}
+
+
