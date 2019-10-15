@@ -14,6 +14,7 @@ RoxygenNote: 6.1.1
 Collate: 
     '00-R_utils.R'
     '01-vec_character.R'
+    'str_word.R'
     '01-vec_integer.R'
     '01-vec_logical.R'
     '01-vec_numeric.R'
