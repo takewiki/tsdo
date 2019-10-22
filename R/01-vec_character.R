@@ -536,13 +536,64 @@ combine_rows_into_longColumn <- function(data,id_var,value_var) {
   
   
 }
+#' 处理向量不包含的问题
+#'
+#' @param all 全部
+#' @param part 部分
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' vector_not_in();
+vector_not_in<- function(all,part){
+  con <- ! all %in% part;
+  res <- all[con]
+  return(res)
+}
 
 
 
 
 #处理订单号
 
-mydata <-c('A123','1234A','2345A');
 
-bb <-str_match(mydata,'\\d{4}');
-cc<-str_detect(mydata,"\\d{4}");
+#' 针对空值进行替代
+#'
+#' @param test_value  测试值
+#' @param replace_value 替代值
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' na_value();
+na_value <- function(test_value,replace_value){
+  if(is.na(test_value)){
+    res <- replace_value
+  }else{
+    res <- test_value
+  }
+  return(res)
+}
+
+#' 针对数据进行处理
+#'
+#' @param test_values 测试值 
+#' @param replace_values 替代值
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' na_values();
+na_values <-function(test_values,replace_values){
+  idx <- seq_along(test_values);
+  res <- list_init(length(idx));
+  for (i in idx){
+    res[[i]] <- na_value(test_values[i],replace_values[i])
+  }
+  res<-unlist(res);
+  return(res);
+              
+}
