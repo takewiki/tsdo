@@ -509,3 +509,40 @@ vect_as_dbl_equal <- function(x){
 }
 
 
+#' 合并多行数据
+#'
+#' @param data 数据框
+#' @param id_var int类型的内码
+#' @param value_var 变量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' combine_rows_into_longColumn();
+combine_rows_into_longColumn <- function(data,id_var,value_var) {
+  col_names <-c(id_var,value_var);
+  bb <- unique(data[,col_names])
+  FId <- as.character(bb[,id_var]);
+  FTxt <- bb[,value_var];
+  res <-split(FTxt,FId);
+  res <- lapply(res,tsdo::vect_as_long_string);
+  res <-unlist(res);
+  FId <- as.integer(names(res));
+  FTxt <-res;
+  data <- data.frame(FId,FTxt,stringsAsFactors = F);
+  names(data) <- col_names;
+  return(data);
+  
+  
+}
+
+
+
+
+#处理订单号
+
+mydata <-c('A123','1234A','2345A');
+
+bb <-str_match(mydata,'\\d{4}');
+cc<-str_detect(mydata,"\\d{4}");

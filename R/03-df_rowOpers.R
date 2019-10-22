@@ -85,3 +85,92 @@ df_filter <- function(data=iris,
  res <- tbl_as_df(res);
  return(res);
 }
+
+#row_delete
+
+#' 按行删除
+#'
+#' @param data 数据
+#' @param id_var id
+#' @param keys 删除关键键
+#'
+#' @return 返回值
+#' @import stringr
+#' @export
+#'
+#' @examples
+#' row_del_byKeys_is()
+row_del_byKeys_is <- function(data,id_var,keys) {
+  x <-data[ ,id_var];
+  con <- !str_equals(x,keys);
+  res <- data[con,];
+  #res <- log_delAutId(res);
+  return(res);
+  
+}
+
+#' 根据行进行删除
+#'
+#' @param data 数据框 
+#' @param id_var id
+#' @param keys 删除关键词
+#'
+#' @return 返回值
+#' @import stringr
+#' @export
+#'
+#' @examples
+#' row_del_byKeys_like();
+row_del_byKeys_like <- function(data,id_var,keys) {
+  x <-data[ ,id_var];
+  con <- !str_contains(x,keys);
+  res <- data[con,];
+  #res <- log_delAutId(res);
+  return(res);
+  
+}
+
+
+
+#' 按行删除按数量
+#'
+#' @param data 数据
+#' @param id_var ID
+#' @param num_digits 位数 
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' row_del_byNum();
+row_del_byNum <-function(data,id_var,num_digits){
+  x <-data[ ,id_var];
+  key <- paste("\\d{",num_digits,"}",sep="")
+  con <- is.na(as.character(str_match(x,key)));
+  res <- data[con,];
+  #res <- log_delAutId(res);
+  return(res);
+}
+
+
+#' 删除字母对
+#'
+#' @param data 数据 
+#' @param id_var 内码
+#' @param num_digits 数据位数
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' row_del_byNumChars()
+row_del_byNumChars <-function(data,id_var,num_digits){
+  x <-data[ ,id_var];
+  key <- paste("[A-Za-z0-9]{",num_digits,"}",sep="")
+  con <- is.na(as.character(str_match(mydata,key)));
+  res <- data[con,];
+  #res <- log_delAutId(res);
+  return(res);
+}
+
+

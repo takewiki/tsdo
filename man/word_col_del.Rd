@@ -21,4 +21,9 @@ word_col_del(data, value_var, keyWords)
 }
 \examples{
 word_col_del();
+library(tsda);
+mydata <- nsim_read('item_question');
+View(mydata);
+mydata2 <- word_col_del(mydata,'FQuestion',c('[图片]','[卡片]'));
+View(mydata2);
 }
