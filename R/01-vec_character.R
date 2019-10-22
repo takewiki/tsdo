@@ -597,3 +597,31 @@ na_values <-function(test_values,replace_values){
   return(res);
               
 }
+
+
+#' 设置分页处理界面
+#'
+#' @param volume 总页数
+#' @param each_page 每页数量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' paging_setting();
+paging_setting <- function(volume =20000L,each_page=7000L){
+  #实现向上取整
+  ncount <- as.integer(round(volume/each_page+0.5,0));
+  ncount2 <- ncount -1L;
+  FStart <- integer(ncount);
+  FEnd <- integer(ncount);
+  for (i in 1:ncount2){
+    FStart[i] <-1L+ each_page*(i-1);
+    FEnd[i] <- each_page*i;
+  }
+   FStart[ncount] <-1L+ each_page*(ncount2);
+   FEnd[ncount] <-volume;
+   res <- data.frame(FStart,FEnd,stringsAsFactors = F)
+   return(res);
+  
+}
