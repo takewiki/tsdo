@@ -611,7 +611,7 @@ na_values <-function(test_values,replace_values){
 #' paging_setting();
 paging_setting <- function(volume =20000L,each_page=7000L){
   #实现向上取整
-  ncount <- as.integer(round(volume/each_page+0.5,0));
+  ncount <- as.integer(round(volume/each_page+0.4999,0));
   ncount2 <- ncount -1L;
   FStart <- integer(ncount);
   FEnd <- integer(ncount);

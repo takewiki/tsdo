@@ -174,3 +174,36 @@ row_del_byNumChars <-function(data,id_var,num_digits){
 }
 
 
+
+#' 针对任意的数据框进行分页处理
+#'
+#' @param data 数据
+#' @param each_page 每页数量 
+#' @param skip_row  跳过行数
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_paging()
+df_paging <- function(data=iris,each_page=7000L,skip_row =0L){
+  body_count <- nrow(data) -skip_row;
+  startIndex <- 1L+skip_row;
+  body_data <-data[startIndex:nrow(data),];
+  pages <-paging_setting(body_count,each_page);
+  page_count <- nrow(pages);
+  res <- list_init(page_count);
+  for ( i in 1:page_count){
+    body2 <-body_data[pages$FStart[i]:pages$FEnd[i],]
+    if(skip_row == 0L){
+      res[[i]] <- body2
+    }else{
+      heading <- data[1:skip_row,];
+    
+      res[[i]] <- rbind(heading,body2);
+    }
+  }
+  return(res)
+  
+  
+}
