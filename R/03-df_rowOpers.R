@@ -167,7 +167,7 @@ row_del_byNum <-function(data,id_var,num_digits){
 row_del_byNumChars <-function(data,id_var,num_digits){
   x <-data[ ,id_var];
   key <- paste("[A-Za-z0-9]{",num_digits,"}",sep="")
-  con <- is.na(as.character(str_match(mydata,key)));
+  con <- is.na(as.character(str_match(x,key)));
   res <- data[con,];
   #res <- log_delAutId(res);
   return(res);
