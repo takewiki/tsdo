@@ -490,7 +490,7 @@ list_as_vect <- function(x) {
 #' @examples
 #' vect_as_long_string();
 vect_as_long_string <- function(x){
-  res <- paste(x,sep="",collapse = "_")
+  res <- paste(x,sep="",collapse = "")
   return(res);
 }
 
