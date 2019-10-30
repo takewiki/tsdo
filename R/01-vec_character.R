@@ -625,3 +625,17 @@ paging_setting <- function(volume =20000L,each_page=7000L){
    return(res);
   
 }
+
+
+#' 处理连接问题
+#'
+#' @param ... 列表
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' sql_paste()
+sql_paste <- function(...){
+  paste(...,sep = "")
+}
