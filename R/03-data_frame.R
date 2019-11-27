@@ -204,3 +204,24 @@ df_as_character <- function(df) {
   
 }
 
+
+#' 将数据框的2列N行转化为N列2行
+#'
+#' @param data 原始数据
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#'df_row2Col(); 
+df_row2Col <-function(data){
+  data2 <- t(data);
+  col_names <-data2[1,];
+  data2 <-data2[-1,,drop=FALSE];
+  colnames(data2) <-col_names
+  rownames(data2) <-NULL;
+  return(data2)
+}
+
+
+
