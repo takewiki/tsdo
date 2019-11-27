@@ -151,6 +151,7 @@ df_rowRepMulti <- function(data,times =6) {
     stop("data参数对应的数据框要求行数必须为1",call. = FALSE)
   }
   res <- as.data.frame(lapply(data,rep,times=times),stringsAsFactors=FALSE);
+  colnames(res) <- colnames(data);
   return(res);
   
 }
