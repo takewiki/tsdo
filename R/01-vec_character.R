@@ -639,3 +639,85 @@ paging_setting <- function(volume =20000L,each_page=7000L){
 sql_paste <- function(...){
   paste(...,sep = "")
 }
+
+
+#' 处理两个字符向量的笛卡尔积展开
+#'
+#' @param x 第一个向量
+#' @param y 第二个向量
+#' @param sep 分隔符
+#'
+#' @return 返回向量
+#' @export
+#'
+#' @examples
+#' text_prod(letters,LETTERS);
+text_prod <- function(x,y,sep="#") {
+  x_count <- length(x);
+  y_count <- length(y);
+ res <- character(x_count*y_count);
+ k <-1;
+ for (i in 1:x_count) {
+   for (j in 1:y_count) {
+     res[k] <- paste(x[i],y[j],sep=sep);
+     k = k+1;
+   }
+ }
+ return(res)
+  
+}
+
+
+#' 将数据框按行按行进行扩展
+#'
+#' @param data 数据
+#' @param var_rows 行上数据
+#' @param var_cols 列上数据
+#' @param var_values 显示数据
+#'
+#' @return 返回值 
+#' @export
+#'
+#' @examples
+#' text_dcast();
+text_dcast <- function(data,
+                       var_rows=c('FNumber','FName'),
+                       var_cols='FType',
+                       var_values=c('FSPID','FSPName')
+                             ) {
+  col_name <- names(data);
+  sel_name <- c(var_rows,var_values,var_cols);
+  bbc <- data[,sel_name];
+  type_unique <-unique(as.character(bbc[ ,var_cols,drop=TRUE]));
+  name_add <- text_prod(type_unique,var_values);
+  type_count <- length(type_unique);
+  value_count <- length(var_values);
+  col_index_new <- 1:(type_count*value_count)+ncol(bbc);
+  bbc[,col_index_new] <-"";
+  name_all2 <- c(col_name,name_add);
+  names(bbc) <-name_all2;
+  #处理数据------
+  type_col <-as.character(bbc[ ,var_cols,drop=TRUE]);
+  bbc_split <- split(bbc,type_col);
+  
+  bbc_combine <- lapply(bbc_split, function(data){
+    ftype_find <- as.character(unique(data[,var_cols,drop=TRUE]));
+    name_find <- paste(ftype_find,var_values,sep="#");
+    name_find_count <- length(name_find);
+    for ( i in 1:name_find_count) {
+      data[,name_find[i]] <- data[var_values[i]];
+      
+    }
+    return(data)
+    
+    
+  })
+  bbc_res <- do.call('rbind',bbc_combine);
+  name_res <- c(var_rows,name_add);
+  res <-bbc_res[ ,name_res];
+  return(res)
+}
+
+
+
+
