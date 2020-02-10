@@ -1,12 +1,12 @@
 Package: tsdo
 Type: Package
 Title: data objects in takewiki solutions
-Version: 0.1.1
+Version: 1.0.0
 Author: hulilei
 Maintainer: hulilei <hulilei@takewiki.com.cn>
 Description: data objects in takewiki solitions 
     don't including the object in the tsdt and tsda mainly this package
-    in charge of transforming and re-constructure
+    in charge of transforming and re-constructure the objects
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
@@ -30,6 +30,7 @@ Collate:
     '05-datetime.R'
     '05a_date.R'
     '05b_time.R'
+    '06_textmining.R'
     '11-color.R'
     'zzz.R'
 Suggests: 
