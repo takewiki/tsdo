@@ -1,7 +1,7 @@
 Package: tsdo
 Type: Package
 Title: data objects in takewiki solutions
-Version: 2.0.0
+Version: 2.0.1
 Author: hulilei
 Maintainer: hulilei <hulilei@takewiki.com.cn>
 Description: data objects in takewiki solitions 
@@ -30,7 +30,6 @@ Collate:
     '05-datetime.R'
     '05a_date.R'
     '05b_time.R'
-    '06_textmining.R'
     '11-color.R'
     '21-allocation.R'
     'zzz.R'
