@@ -258,7 +258,7 @@ df_setList_char <- function(data){
   
   for(i in 1:ncol(data)) {
     if(nrow(data) == 0) {
-      thedata[,i] <- character()
+      data[,i] <- character()
     } else if(is.list(data[,i])) {
       data[,i] <- sapply(data[,i], FUN = function(x) { paste0(x, collapse = ', ') })
     }
