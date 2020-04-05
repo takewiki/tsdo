@@ -243,3 +243,31 @@ df_setColCaption <- function(data,col_names,caption_names){
   
 }
 
+
+
+#' 将列如果是列表转移成字符串
+#'
+#' @param data 数据框
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_setList_char()
+df_setList_char <- function(data){
+  
+  for(i in 1:ncol(data)) {
+    if(nrow(data) == 0) {
+      thedata[,i] <- character()
+    } else if(is.list(data[,i])) {
+      data[,i] <- sapply(data[,i], FUN = function(x) { paste0(x, collapse = ', ') })
+    }
+  }
+  
+  return(data)
+  
+}
+
+
+
+
