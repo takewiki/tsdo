@@ -224,3 +224,22 @@ df_row2Col <-function(data){
   return(data2)
 }
 
+
+#' 设置列名
+#'
+#' @param data 数据框 
+#' @param col_names 列名
+#' @param caption_names  列标称名
+#'
+#' @return 返回数据框
+#' @export
+#'
+#' @examples
+#' df_setColCaption()
+df_setColCaption <- function(data,col_names,caption_names){
+  res <- data[,col_names]
+  names(res) <- caption_names
+  return(res)
+  
+}
+
