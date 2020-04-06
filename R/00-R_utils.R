@@ -26,3 +26,28 @@ R_exec <- function(expr){
 #' @importFrom magrittr %>%
 #' @export
 magrittr::`%>%`
+
+
+
+
+
+#' 添加下载函数
+#'
+#' @param src 文件来源
+#' @param dest 目标
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' download()
+download <- function(src,dest) {
+  r <- download.file(src,dest,quiet = TRUE)
+  if(r == 0){
+    res <-TRUE
+  }else{
+    res <- FALSE
+  }
+  return(res)
+  
+}
