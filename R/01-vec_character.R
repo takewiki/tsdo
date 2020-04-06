@@ -694,6 +694,27 @@ text_dcast <- function(data,
   return(res)
 }
 
+#' 自动补全功能
+#'
+#' @param x 字符串
+#' @param suffix 后缀
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_suffix_complete()
+str_suffix_complete <- function(x,suffix="/"){
+  n = length(suffix)
+  if(tsdo::right(x,n) != suffix){
+    res <- paste(x,suffix,sep="")
+  }else{
+    res <-x
+  }
+  return(res)
+  
+}
+
 
 
 
