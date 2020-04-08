@@ -716,5 +716,26 @@ str_suffix_complete <- function(x,suffix="/"){
 }
 
 
+#' 自动添加相关词语
+#'
+#' @param x  原来语句
+#' @param word 现有语句
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_add
+str_add <- function(x,word="/") {
+  if(str_detect(x,word)){
+    res <- x
+  }else{
+    res <- paste0(word,x)
+  }
+  return(res)
+  
+}
+
+
 
 
