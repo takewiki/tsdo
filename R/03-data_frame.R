@@ -258,7 +258,7 @@ df_setList_char <- function(data){
   
   for(i in 1:ncol(data)) {
     if(nrow(data) == 0) {
-      data[,i] <- character()
+      tsdodata[,i] <- character()
     } else if(is.list(data[,i])) {
       data[,i] <- sapply(data[,i], FUN = function(x) { paste0(x, collapse = ', ') })
     }
@@ -269,5 +269,22 @@ df_setList_char <- function(data){
 }
 
 
+
+#' 数据框添加列
+#'
+#' @param data 数据框
+#' @param col_name 列名
+#' @param col_value 列值
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_addCol()
+df_addCol <- function(data=iris,col_name='bbc',col_value='123'){
+  res <- data
+  res[,col_name] <- col_value
+  return(res)
+}
 
 
