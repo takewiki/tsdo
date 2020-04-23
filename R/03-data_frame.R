@@ -288,3 +288,26 @@ df_addCol <- function(data=iris,col_name='bbc',col_value='123'){
 }
 
 
+
+
+#' 将数据框转换成分组列表
+#'
+#' @param df 数据框
+#' @param group_col 分组列名
+#' @param value_col 值名
+#'
+#' @return 返回二维list
+#' @export
+#'
+#' @examples
+#' df_as_groupList()
+df_as_groupList <- function(df,group_col,value_col) {
+  df_split <- split(df,df[,group_col])
+  res <-lapply(df_split, function(item){
+    value <- item[,value_col]
+    r <- tsdo::vect_as_list(value)
+    return(r)
+  })
+  return(res)
+}
+
