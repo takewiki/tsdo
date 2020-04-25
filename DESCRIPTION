@@ -32,6 +32,7 @@ Collate:
     '05b_time.R'
     '11-color.R'
     '21-allocation.R'
+    '31-nse.R'
     'zzz.R'
 Suggests: 
     testthat
