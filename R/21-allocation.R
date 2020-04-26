@@ -14,9 +14,9 @@ allocate <- function (df1,df2){
   ncount2 <- nrow(df2);
   #从中获取最小行
   n <- min(ncount1,ncount2)
-  print(ncount1)
-  print(ncount2)
-  print(n)
+  #print(ncount1)
+  #print(ncount2)
+  #print(n)
   if(n >=1){
     res1 <- df1[1:n,,drop=FALSE];
     res2 <- df2[1:n,,drop=FALSE];

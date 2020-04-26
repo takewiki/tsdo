@@ -737,5 +737,23 @@ str_add <- function(x,word="/") {
 }
 
 
+#' 针对数据进行数据
+#'
+#' @param x 原来值
+#' @param value 替代值
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' na_replace()
+na_replace <- function(x,value) {
+  res <- x
+  res[is.na(res)] <- value
+  return(res)
+  
+}
+
+
 
 

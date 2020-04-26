@@ -270,4 +270,44 @@ df_setList_char <- function(data){
 
 
 
+#' 数据框添加列
+#'
+#' @param data 数据框
+#' @param col_name 列名
+#' @param col_value 列值
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_addCol()
+df_addCol <- function(data=iris,col_name='bbc',col_value='123'){
+  res <- data
+  res[,col_name] <- col_value
+  return(res)
+}
+
+
+
+
+#' 将数据框转换成分组列表
+#'
+#' @param df 数据框
+#' @param group_col 分组列名
+#' @param value_col 值名
+#'
+#' @return 返回二维list
+#' @export
+#'
+#' @examples
+#' df_as_groupList()
+df_as_groupList <- function(df,group_col,value_col) {
+  df_split <- split(df,df[,group_col])
+  res <-lapply(df_split, function(item){
+    value <- item[,value_col]
+    r <- tsdo::vect_as_list(value)
+    return(r)
+  })
+  return(res)
+}
 

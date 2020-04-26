@@ -260,3 +260,21 @@ date_diff <- function(startDate,endDate,unit='d',hourPerDay=8,is.hr=TRUE) {
   
   
 }
+
+
+
+#' 获取当前时间
+#'
+#' @param n 重复次数
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' getTime()
+getTime <- function(n=1) {
+  r <- as.character(Sys.time())
+  res <- rep(r,n)
+  return(res)
+  
+}
