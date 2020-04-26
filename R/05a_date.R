@@ -39,4 +39,21 @@ date_minus <-function(startDate='1984-01-01',endDate='1984-01-05'){
   
   
 }
+
+
+#' 获取日期数据
+#'
+#' @param n 重复次数
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' getDate()
+getDate <- function(n=1) {
+  res <- as.character(Sys.Date())
+  res <- rep(res,n)
+  return(res)
+  
+}
   
