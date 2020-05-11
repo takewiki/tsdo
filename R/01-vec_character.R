@@ -786,3 +786,55 @@ str_HasDateTime <- function(x){
    return(res)
   
 }
+
+#' 获取字段日期时间部分
+#'
+#' @param x 向量
+#'
+#' @return 返回值
+#' @import stringr
+#' @export
+#'
+#' @examples
+#' str_extractDatetime()
+str_extractDateTime <- function(x) {
+  res <- str_extract(x,'[1-9]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\\s+(20|21|22|23|[0-1]\\d):[0-5]\\d:[0-5]\\d')
+  
+  return(res)
+  
+}
+
+
+#' 获取字段中的日期部分
+#'
+#' @param x 向量
+#'
+#' @return 返回值
+#' @import stringr
+#' @export
+#'
+#' @examples
+#' str_extractDate()
+str_extractDate <- function(x) {
+  res <- str_extract(x,'[1-9]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])')
+  
+  return(res)
+  
+}
+
+#' 获取字段的时间部分
+#'
+#' @param x 向量
+#'
+#' @return 返回值
+#' @import stringr
+#' @export
+#'
+#' @examples
+#' str_extractTime()
+str_extractTime<- function(x) {
+  res <- str_extract(x,'(20|21|22|23|[0-1]\\d):[0-5]\\d:[0-5]\\d')
+  
+  return(res)
+  
+}
