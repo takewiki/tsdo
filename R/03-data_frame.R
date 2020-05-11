@@ -311,3 +311,88 @@ df_as_groupList <- function(df,group_col,value_col) {
   return(res)
 }
 
+
+
+#' 将数据按标记进行处理
+#'
+#' @param data 数据
+#' @param var_txt 内容
+#' @param var_flag 标记
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_combineRows()
+df_combineRows <- function(data,var_txt,var_flag){
+  data$FCumsum <- cumsum(data[,var_flag])
+  data_split <- split(data,data$FCumsum)
+  res <- lapply(data_split,function(item){
+    txt <-paste(item[,var_txt],collapse = ";")
+    flag <- item[1,var_flag]
+    FCumsum <- item[1,'FCumsum']
+    res <- data.frame(txt,flag,FCumsum,stringsAsFactors = F)
+    names(res) <-c(var_txt,var_flag,'FCumFlag')
+    return(res)
+    
+  })
+  data_combined <- do.call('rbind',res)
+  return(data_combined)
+}
+
+
+
+#' 针对数据分列处理，按指定列进行处理
+#'
+#' @param data  数据框
+#' @param var_txt  原始内容列
+#' @param var_split 分列依据字段
+#' @param var_left 左边字段
+#' @param left_skip 分列左边忽略字符数
+#' @param var_right 右边字段
+#' @param right_skip 分列右边忽略字符数
+#'
+#' @return 返回数据框
+#' @export
+#'
+#' @examples
+#' df_splitByCol
+df_splitByCol <- function(data,var_txt='FLog',var_split='log_datetime',var_left='author',left_skip=2,var_right='content',right_skip=4){
+  data_split <- lapply(1:nrow(data), function(i){
+    item <- data[i,]
+    
+    txt <- item[1,var_txt]
+    datetime <- item[1,var_split]
+    info <-stringr::str_locate(txt,datetime)
+    start_loc <- info[1,1]
+    end_loc <- info[1,2]
+    item_len <-tsdo::len(txt)
+    item[1,var_left] <-tsdo::left(txt,start_loc-left_skip)
+    item[1,var_right] <- tsdo::right(txt,item_len-end_loc-right_skip)
+    return(item)
+  })
+  res <- do.call('rbind',data_split)
+  return(res)
+  
+  
+}
+
+
+#' 针对数据框设置标准
+#'
+#' @param data 数据框
+#' @param var_txt 内容字段
+#' @param keyword 关键词
+#' @param var_flag 标记字段
+#'
+#' @return 返回一个数据框
+#' @export
+#'
+#' @examples
+#' df_setLabel
+df_setLabel <- function(data,var_txt='FLog',keyword='捷豹路虎官方旗舰店',var_flag='FIsCsp'){
+  
+  data[,var_flag]  <- stringr::str_detect(data[,var_txt],keyword)
+  return(data)
+  
+}
