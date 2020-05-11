@@ -376,3 +376,23 @@ df_splitByCol <- function(data,var_txt='FLog',var_split='log_datetime',var_left=
   
   
 }
+
+
+#' 针对数据框设置标准
+#'
+#' @param data 数据框
+#' @param var_txt 内容字段
+#' @param keyword 关键词
+#' @param var_flag 标记字段
+#'
+#' @return 返回一个数据框
+#' @export
+#'
+#' @examples
+#' df_setLabel
+df_setLabel <- function(data,var_txt='FLog',keyword='捷豹路虎官方旗舰店',var_flag='FIsCsp'){
+  
+  data[,var_flag]  <- stringr::str_detect(data[,var_txt],keyword)
+  return(data)
+  
+}
