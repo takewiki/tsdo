@@ -396,3 +396,24 @@ df_setLabel <- function(data,var_txt='FLog',keyword='捷豹路虎官方旗舰店
   return(data)
   
 }
+
+
+#' get the datarightpart
+#'
+#' @param data data
+#' @param var_txt txt
+#' @param var_right right
+#' @param var_left left
+#'
+#' @return return
+#' @export
+#'
+#' @examples
+#' df_left
+df_left <- function(data,var_txt,var_right,var_left) {
+     lapply(seq_along(data), function(i){
+      data[i,var_left] <<- tsdo::left(data[i,var_txt,drop=TRUE],tsdo::len(data[i,var_txt,drop=TRUE])-tsdo::len(data[i,var_right,drop=TRUE]))
+    })
+    return(data)
+  
+}
