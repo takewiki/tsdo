@@ -4,10 +4,14 @@
 \alias{df_groupBy_summarise_cols_funs}
 \title{将数据框进行分组计算}
 \usage{
-df_groupBy_summarise_cols_funs(data = mtcars, gp_fieldName = c("cyl",
-  "disp"), gp_fieldCaption = NULL, summ_fieldName = c("mpg", "cyl",
-  "disp"), funName = c("mean", "sum", "length"),
-  summ_fieldCaption = letters[1:3])
+df_groupBy_summarise_cols_funs(
+  data = mtcars,
+  gp_fieldName = c("cyl", "disp"),
+  gp_fieldCaption = NULL,
+  summ_fieldName = c("mpg", "cyl", "disp"),
+  funName = c("mean", "sum", "length"),
+  summ_fieldCaption = letters[1:3]
+)
 }
 \arguments{
 \item{data}{数据框}

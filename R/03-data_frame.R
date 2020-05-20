@@ -411,7 +411,8 @@ df_setLabel <- function(data,var_txt='FLog',keyword='捷豹路虎官方旗舰店
 #' @examples
 #' df_left
 df_left <- function(data,var_txt,var_right,var_left) {
-     lapply(seq_along(data), function(i){
+     ncount = nrow(data)
+     lapply(1:ncount, function(i){
       data[i,var_left] <<- tsdo::left(data[i,var_txt,drop=TRUE],tsdo::len(data[i,var_txt,drop=TRUE])-tsdo::len(data[i,var_right,drop=TRUE]))
     })
     return(data)

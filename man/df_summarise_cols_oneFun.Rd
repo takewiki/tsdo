@@ -4,8 +4,11 @@
 \alias{df_summarise_cols_oneFun}
 \title{表的指定列使用同一个函数处理}
 \usage{
-df_summarise_cols_oneFun(data = mtcars, fieldName = c("mpg", "cyl",
-  "disp"), fun)
+df_summarise_cols_oneFun(
+  data = mtcars,
+  fieldName = c("mpg", "cyl", "disp"),
+  fun
+)
 }
 \arguments{
 \item{data}{数据框}

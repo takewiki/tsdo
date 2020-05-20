@@ -4,8 +4,12 @@
 \alias{df_groupBy_topN}
 \title{获取数据框每个分组前N个数据}
 \usage{
-df_groupBy_topN(data = iris, gp_fieldName = c("Species",
-  "Petal.Width"), order_fieldName = "Sepal.Width", N = 3)
+df_groupBy_topN(
+  data = iris,
+  gp_fieldName = c("Species", "Petal.Width"),
+  order_fieldName = "Sepal.Width",
+  N = 3
+)
 }
 \arguments{
 \item{data}{数据框}

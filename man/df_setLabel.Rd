@@ -4,8 +4,12 @@
 \alias{df_setLabel}
 \title{针对数据框设置标准}
 \usage{
-df_setLabel(data, var_txt = "FLog",
-  keyword = "捷豹路虎官方旗舰店", var_flag = "FIsCsp")
+df_setLabel(
+  data,
+  var_txt = "FLog",
+  keyword = "捷豹路虎官方旗舰店",
+  var_flag = "FIsCsp"
+)
 }
 \arguments{
 \item{data}{数据框}

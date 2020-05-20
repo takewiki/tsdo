@@ -4,9 +4,12 @@
 \alias{df_summarise_cols_funs}
 \title{针对表中的字段进行统计，在不分的情况下}
 \usage{
-df_summarise_cols_funs(data = mtcars, fieldName = c("mpg", "cyl",
-  "disp"), funName = c("mean", "sum", "length"),
-  fieldCaption = letters[1:3])
+df_summarise_cols_funs(
+  data = mtcars,
+  fieldName = c("mpg", "cyl", "disp"),
+  funName = c("mean", "sum", "length"),
+  fieldCaption = letters[1:3]
+)
 }
 \arguments{
 \item{data}{数据集}

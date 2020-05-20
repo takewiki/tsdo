@@ -4,8 +4,12 @@
 \alias{df_leftJoin_byDiffColNames}
 \title{两个数据框左连接，列名不同，但一一对应}
 \usage{
-df_leftJoin_byDiffColNames(data_frame1, data_frame2, leftBy_fieldName,
-  rightBy_fieldName)
+df_leftJoin_byDiffColNames(
+  data_frame1,
+  data_frame2,
+  leftBy_fieldName,
+  rightBy_fieldName
+)
 }
 \arguments{
 \item{data_frame1}{第1数据框}

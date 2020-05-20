@@ -4,8 +4,12 @@
 \alias{text_dcast}
 \title{将数据框按行按行进行扩展}
 \usage{
-text_dcast(data, var_rows = c("FNumber", "FName"), var_cols = "FType",
-  var_values = c("FSPID", "FSPName"))
+text_dcast(
+  data,
+  var_rows = c("FNumber", "FName"),
+  var_cols = "FType",
+  var_values = c("FSPID", "FSPName")
+)
 }
 \arguments{
 \item{data}{数据}

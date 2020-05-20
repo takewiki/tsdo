@@ -4,8 +4,11 @@
 \alias{df_rowRepMultiByDate}
 \title{根据日期及时间数据拆分笔}
 \usage{
-df_rowRepMultiByDate(data, startDateName = "FStartDate",
-  endDateName = "FEndDate")
+df_rowRepMultiByDate(
+  data,
+  startDateName = "FStartDate",
+  endDateName = "FEndDate"
+)
 }
 \arguments{
 \item{data}{数据}

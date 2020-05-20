@@ -4,21 +4,21 @@
 \alias{df_fullJoin_byDiffColNames}
 \title{两个数据框全连接，列名不同，但一一对应}
 \usage{
-df_fullJoin_byDiffColNames(data_frame1, data_frame2, leftBy_fieldName,
-  rightBy_fieldName)
+df_fullJoin_byDiffColNames(
+  data_frame1,
+  data_frame2,
+  leftBy_fieldName,
+  rightBy_fieldName
+)
 
-df_fullJoin_byDiffColNames(data_frame1, data_frame2, leftBy_fieldName,
-  rightBy_fieldName)
+df_fullJoin_byDiffColNames(
+  data_frame1,
+  data_frame2,
+  leftBy_fieldName,
+  rightBy_fieldName
+)
 }
 \arguments{
-\item{data_frame1}{第1数据框}
-
-\item{data_frame2}{每2数据框}
-
-\item{leftBy_fieldName}{左列名}
-
-\item{rightBy_fieldName}{右列表}
-
 \item{data_frame1}{第1数据框}
 
 \item{data_frame2}{每2数据框}

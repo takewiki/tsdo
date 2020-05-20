@@ -4,8 +4,7 @@
 \alias{date_diff}
 \title{计算2个日期之间的差异}
 \usage{
-date_diff(startDate, endDate, unit = "d", hourPerDay = 8,
-  is.hr = TRUE)
+date_diff(startDate, endDate, unit = "d", hourPerDay = 8, is.hr = TRUE)
 }
 \arguments{
 \item{startDate}{开始日期}

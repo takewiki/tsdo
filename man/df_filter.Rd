@@ -4,9 +4,13 @@
 \alias{df_filter}
 \title{将数据集进行过滤}
 \usage{
-df_filter(data = iris, fieldName = c("Species", "Sepal.Width"),
-  comparerSign = c("=", ">="), value_vec = c("'setosa'", "3.0"),
-  comboLogi_vec = c("and", "and"))
+df_filter(
+  data = iris,
+  fieldName = c("Species", "Sepal.Width"),
+  comparerSign = c("=", ">="),
+  value_vec = c("'setosa'", "3.0"),
+  comboLogi_vec = c("and", "and")
+)
 }
 \arguments{
 \item{data}{数据框}

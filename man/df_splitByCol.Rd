@@ -4,9 +4,15 @@
 \alias{df_splitByCol}
 \title{针对数据分列处理，按指定列进行处理}
 \usage{
-df_splitByCol(data, var_txt = "FLog", var_split = "log_datetime",
-  var_left = "author", left_skip = 2, var_right = "content",
-  right_skip = 4)
+df_splitByCol(
+  data,
+  var_txt = "FLog",
+  var_split = "log_datetime",
+  var_left = "author",
+  left_skip = 2,
+  var_right = "content",
+  right_skip = 4
+)
 }
 \arguments{
 \item{data}{数据框}
