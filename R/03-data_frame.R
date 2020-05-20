@@ -413,8 +413,38 @@ df_setLabel <- function(data,var_txt='FLog',keyword='捷豹路虎官方旗舰店
 df_left <- function(data,var_txt,var_right,var_left) {
      ncount = nrow(data)
      lapply(1:ncount, function(i){
-      data[i,var_left] <<- tsdo::left(data[i,var_txt,drop=TRUE],tsdo::len(data[i,var_txt,drop=TRUE])-tsdo::len(data[i,var_right,drop=TRUE]))
+       # 针对第一行进行处理
+       nchar_loc <-tsdo::len(data[i,var_txt,drop=TRUE])-tsdo::len(data[i,var_right,drop=TRUE])
+      data[i,var_left] <<- tsdo::left(data[i,var_txt,drop=TRUE],nchar_loc)
     })
     return(data)
   
 }
+
+
+#' 提供数据框的右边部分
+#'
+#' @param data  数据
+#' @param var_text 文本内容
+#' @param var_left 左边已有内容
+#' @param var_right 待生成右边内容
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' df_right()
+df_right <- function(data,var_text,var_left,var_right) {
+  ncount = nrow(data)
+  lapply(1:ncount, function(i){
+    # 针对第一行进行处理
+    nchar_loc <-tsdo::len(data[i,var_txt,drop=TRUE])-tsdo::len(data[i,var_left,drop=TRUE])
+    data[i,var_right] <<- tsdo::right(data[i,var_txt,drop=TRUE],nchar_loc)
+  })
+  return(data)
+  
+  
+}
+
+
+
