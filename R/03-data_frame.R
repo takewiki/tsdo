@@ -425,16 +425,16 @@ df_left <- function(data,var_txt,var_right,var_left) {
 #' 提供数据框的右边部分
 #'
 #' @param data  数据
-#' @param var_text 文本内容
 #' @param var_left 左边已有内容
 #' @param var_right 待生成右边内容
+#' @param var_txt 文本内容
 #'
 #' @return 返回值
 #' @export
 #'
 #' @examples
 #' df_right()
-df_right <- function(data,var_text,var_left,var_right) {
+df_right <- function(data,var_txt,var_left,var_right) {
   ncount = nrow(data)
   lapply(1:ncount, function(i){
     # 针对第一行进行处理

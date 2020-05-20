@@ -4,12 +4,12 @@
 \alias{df_right}
 \title{提供数据框的右边部分}
 \usage{
-df_right(data, var_text, var_left, var_right)
+df_right(data, var_txt, var_left, var_right)
 }
 \arguments{
 \item{data}{数据}
 
-\item{var_text}{文本内容}
+\item{var_txt}{文本内容}
 
 \item{var_left}{左边已有内容}
 

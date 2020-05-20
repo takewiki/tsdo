@@ -306,7 +306,8 @@ replaceStr <- function (x,pattern,newStr)
 #' @examples getPhoneNumber();
 getPhoneNumber <- function(x) {
   srcdata <- x;
-  phone_part <-str_match(srcdata,"\\d?\\d?\\d?\\d?-?\\d{7}\\d?|1[34578]\\d{9}");
+  #添加分机号的识别
+  phone_part <-str_match(srcdata,"\\d?\\d?\\d?\\d?-?\\d{7}\\d?-?\\d?\\d?\\d?\\d?|1[34578]\\d{9}");
   res <- as.character(phone_part);
   
   return(res);
