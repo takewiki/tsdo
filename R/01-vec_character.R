@@ -721,17 +721,23 @@ str_suffix_complete <- function(x,suffix="/"){
 #'
 #' @param x  原来语句
 #' @param word 现有语句
+#' @param blank 是否添加空格
 #'
 #' @return 返回值
 #' @export
 #'
 #' @examples
 #' str_add
-str_add <- function(x,word="/") {
+str_add <- function(x,word="/",blank=FALSE) {
   if(str_detect(x,word)){
     res <- x
   }else{
-    res <- paste0(word,x)
+    if (blank){
+      res <- paste0(word," ",x)
+    }else{
+      res <- paste0(word,x) 
+    }
+   
   }
   return(res)
   

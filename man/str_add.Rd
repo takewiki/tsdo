@@ -4,12 +4,14 @@
 \alias{str_add}
 \title{自动添加相关词语}
 \usage{
-str_add(x, word = "/")
+str_add(x, word = "/", blank = FALSE)
 }
 \arguments{
 \item{x}{原来语句}
 
 \item{word}{现有语句}
+
+\item{blank}{是否添加空格}
 }
 \value{
 返回值
