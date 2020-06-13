@@ -448,3 +448,181 @@ df_right <- function(data,var_txt,var_left,var_right) {
 
 
 
+
+
+#' 针对数据框进行打款
+#'
+#' @param data 数据框
+#' @param var_text 字符
+#' @param dict 规则表
+#' @param var_flag 是否打中
+#' @param var_tag_by 判断标记
+#'
+#' @return 返回数据框
+#' @export
+#'
+#' @examples
+#' df_blackList_tagging()
+df_blackList_tagging <-function(data,var_text='Ftxt',dict,var_flag='Fflag',var_tag_by='Ftag_by'){
+  
+  ncount <-nrow(data)
+  if(ncount >0){
+    #针对有数据的情况下进行处理
+    for (i in 1:ncount) {
+      #针对每一行数据进行处理
+      x <-data[i,var_text]
+      if(is.na(x)){
+        x <- ""
+      }
+      #针对数据进行处理
+      #初始化变更
+      find <- 0
+      flag <- FALSE
+      tag_by <-""
+      #针对每种情况进行处理
+      #1手机号-----
+      if(find ==0 & flag == FALSE){
+        #判断是否手机号
+        flag <- str_contain_num(x,digit = 11)
+        if(flag){
+          find <- 1
+          tag_by <-"手机号"
+        }
+      }
+      #2车架号----
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_vin(x)
+        if(flag){
+          find <- 1
+          tag_by <-"车架号"
+        }
+      }
+      #3网址
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_http(x)
+        if(flag){
+          find <- 1
+          tag_by <-"网址"
+        }
+      }
+      #4卡片
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_card(x)
+        if(flag){
+          find <- 1
+          tag_by <-"[卡片]"
+        }
+      }
+      #5图片.
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_picture(x)
+        if(flag){
+          find <- 1
+          tag_by <-"[图片]"
+        }
+      }
+      #6.表情
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_emotion(x)
+        if(flag){
+          find <- 1
+          tag_by <-"[表情]"
+        }
+      }
+      #7.语音
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_sound(x)
+        if(flag){
+          find <- 1
+          tag_by <-"[语音]"
+        }
+      }
+      # 8.emoji
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_emoji(x)
+        if(flag){
+          find <- 1
+          tag_by <-"[emoji]"
+        }
+      }
+      #9.?
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_ask(x)
+        if(flag){
+          find <- 1
+          tag_by <-"问号1"
+        }
+      }
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_ask2(x)
+        if(flag){
+          find <- 1
+          tag_by <-"问号2"
+        }
+      }
+      if(find ==0 & flag ==FALSE){
+        flag <- str_contain_ask3(x)
+        if(flag){
+          find <- 1
+          tag_by <-"问号3"
+        }
+      }
+      #10处理空行数据
+      if(find ==0 & flag ==FALSE){
+        #NA作为空白行进行处理
+        if(is.na(x)){
+          x <-""
+        }
+        flag <- str_contain_blank(x)
+        if(flag){
+          find <- 1
+          tag_by <-"空白行"
+        }
+      }
+      
+      #11使用对照表进行处理
+      if(find ==0 & flag ==FALSE){
+        #针对规则表中的每一个数据处理
+        for (rule in dict) {
+          res <-stringr::str_detect(x,rule)
+          if(res){
+            #print(i)
+            flag <- TRUE
+            tag_by<- rule
+            find <-1
+            break;
+          }else{
+            next;
+          }
+          
+        }
+    }# end for 10
+      
+      data[i,var_flag] <- flag
+      data[i,var_tag_by] <- tag_by
+      
+      
+      
+      
+      
+      
+      
+      
+    }#end for row deal
+    
+    
+  }
+  
+  return(data)
+  
+  
+  
+}
+
+
+
+
+
+
+
+

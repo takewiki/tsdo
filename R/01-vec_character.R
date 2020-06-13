@@ -845,3 +845,252 @@ str_extractTime<- function(x) {
   return(res)
   
 }
+
+
+
+
+#' 字符串包含内容
+#'
+#' @param x 字段
+#' @param digit 数字位数
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_num() 
+str_contain_num <-  function(x,digit=11) {
+  expr <- paste0("\\d{",digit,"}")
+  res <-stringr::str_detect(x,expr)
+  return(res)
+}
+  
+
+
+#' 用于识别车架号信息vin
+#'
+#' @param x 信息
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_vin()
+str_contain_vin <- function(x){
+  #强制转化为大写字母
+  x = toupper(x)
+  res <- stringr::str_detect(x,"[A-HJ-NPR-Z\\d]{17}")
+  return(res)
+}
+
+
+#' 判断是否存在网址
+#'
+#' @param x 变更 
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_http()
+str_contain_http <-function(x){
+  #强制转换
+  x <- toupper(x)
+  res <- stringr::str_detect(x,"HTTP")
+  return(res)
+  
+}
+
+#' 针对卡片进行处理
+#'
+#' @param x 变量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_card()
+str_contain_card <-function(x){
+  res <- stringr::str_detect(x,"\\[卡片\\]")
+  return(res)
+  
+  
+}
+
+
+#' 是否包含图片
+#'
+#' @param x 变量 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' str_contain_picture()
+str_contain_picture <-function(x){
+  res <- stringr::str_detect(x,"\\[图片\\]")
+  return(res)
+  
+  
+}
+
+
+
+#' 针对表情字段进行判断 
+#'
+#' @param x 变量
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' str_contain_emotion()
+str_contain_emotion <-function(x){
+  res <- stringr::str_detect(x,"\\[表情\\]")
+  return(res)
+  
+  
+}
+
+
+#' 是否包含表情字段
+#'
+#' @param x 变量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_emoji()
+str_contain_emoji <-function(x){
+  res <- stringr::str_detect(x,"\\[emoji\\]")
+  return(res)
+  
+  
+}
+
+#' 针对语音进行处理
+#'
+#' @param x 变量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_sound()
+str_contain_sound <-function(x){
+  res <- stringr::str_detect(x,"\\[语音\\]")
+  return(res)
+  
+  
+}
+
+
+
+
+#' 针对问进行处理
+#'
+#' @param x 变更
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_ask()
+str_contain_ask <- function(x){
+  #将中文转英文问号
+  x <- stringr::str_replace_all(x,"？","?")
+  res <- stringr::str_detect(x,"\\?")
+  if(res){
+    if (len(x) ==1){
+      res <- TRUE
+      
+    }else{
+      
+      res <- FALSE
+      
+    }
+  }
+  
+
+  return(res)
+}
+
+
+#' 文件包含2个问号
+#'
+#' @param x 内容
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_ask2()
+str_contain_ask2 <- function(x){
+  #将中文转英文问号
+  x <- stringr::str_replace_all(x,"？","?")
+  res <- stringr::str_detect(x,"\\?")
+  if(res){
+    if (len(x) ==2){
+      res <- TRUE
+      
+    }else{
+      
+      res <- FALSE
+      
+    }
+  }
+  
+  
+  return(res)
+}
+
+#' 文件包含3个问号
+#'
+#' @param x 内容
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_ask3()
+str_contain_ask3 <- function(x){
+  #将中文转英文问号
+  x <- stringr::str_replace_all(x,"？","?")
+  res <- stringr::str_detect(x,"\\?")
+  if(res){
+    if (len(x) ==3){
+      res <- TRUE
+      
+    }else{
+      
+      res <- FALSE
+      
+    }
+  }
+  
+  
+  return(res)
+}
+
+
+#' 检验空行
+#'
+#' @param x 向量 
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' str_contain_blank()
+str_contain_blank <- function(x) {
+  x <- as.character(x)
+  nlen <-len(x)
+  if(nlen == 0 ){
+    res <-TRUE
+  }else{
+    res <- FALSE
+  }
+  return(res)
+}
+
