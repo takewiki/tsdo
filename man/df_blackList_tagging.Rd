@@ -7,7 +7,8 @@
 df_blackList_tagging(
   data,
   var_text = "Ftxt",
-  dict,
+  dict_contain,
+  dict_equal,
   var_flag = "Fflag",
   var_tag_by = "Ftag_by"
 )
@@ -17,7 +18,9 @@ df_blackList_tagging(
 
 \item{var_text}{字符}
 
-\item{dict}{规则表}
+\item{dict_contain}{包含规则的黑名单}
+
+\item{dict_equal}{严格相等的黑名单}
 
 \item{var_flag}{是否打中}
 

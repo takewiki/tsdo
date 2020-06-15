@@ -867,6 +867,20 @@ str_contain_num <-  function(x,digit=11) {
   
 
 
+#' 判断文件中是否包含电话号码
+#'
+#' @param x 向量
+#'
+#' @return 反回值
+#' @export
+#'
+#' @examples
+#' str_contain_phone()
+str_contain_phone <-function(x){
+  res <- stringr::str_detect(x,"\\d?\\d?\\d?\\d?-?\\d{7}\\d?-?\\d?\\d?\\d?\\d?|1[34578]\\d{9}")
+  return(res)
+}
+
 #' 用于识别车架号信息vin
 #'
 #' @param x 信息
