@@ -28,6 +28,24 @@ R_exec <- function(expr){
 magrittr::`%>%`
 
 
+#' 调用相关命令
+#'
+#' @param txt  文件
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' callR()
+callR <- function(txt) {
+  
+  expr_1 <- R_expr(txt)
+  R_exec(expr = expr_1)
+  return(res)
+  
+}
+
+
 
 
 
