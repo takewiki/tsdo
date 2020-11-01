@@ -4,10 +4,12 @@
 \alias{R_exec}
 \title{执行R代表}
 \usage{
-R_exec(expr)
+R_exec(expr, envir = parent.frame())
 }
 \arguments{
 \item{expr}{表达式}
+
+\item{envir}{环境}
 }
 \value{
 执行结果，不需要返回
