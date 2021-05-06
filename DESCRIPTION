@@ -1,7 +1,7 @@
 Package: tsdo
 Type: Package
 Title: data objects in takewiki solutions
-Version: 3.0.5
+Version: 3.0.6
 Author: hulilei
 Maintainer: hulilei <hulilei@takewiki.com.cn>
 Description: data objects in takewiki solitions 
@@ -10,7 +10,7 @@ Description: data objects in takewiki solitions
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Collate: 
     '00-R_utils.R'
     '01-vec_character.R'

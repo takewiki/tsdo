@@ -1108,3 +1108,20 @@ str_contain_blank <- function(x) {
   return(res)
 }
 
+
+
+#' 格式化向量为sql格式
+#'
+#' @param x 向量
+#'
+#' @return 返回值
+#' @export
+#'
+#' @examples
+#' sql_str()
+sql_str <- function(x) {
+  res <-paste0("'",x,"'",collapse = ",")
+  return(res)
+  
+}
+
